@@ -29,6 +29,10 @@ export class UsuarioService {
     return await this.UsuarioRepository.save(nuevoUsuario); // Cambiado a this.UsuarioRepository
   }
 
+  async findOneByEmail(email:string){
+    return this.UsuarioRepository.findOneBy({email});
+  }
+
   async findAll() {
     return await this.UsuarioRepository.find(); // Cambiado a this.UsuarioRepository
   }
