@@ -1,85 +1,137 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 📚 Biblioteca María Moliner - API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## ✨ Descripción
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+La **Biblioteca María Moliner** es una API diseñada para gestionar una biblioteca virtual, permitiendo a los usuarios crear, reservar y gestionar libros a través de funcionalidades de autenticación y manejo de usuarios. Esta API está construida con el framework **NestJS** y utiliza una estructura modular para facilitar su escalabilidad y mantenimiento.
 
-## Description
+## 🚀 Funcionalidades Principales
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **🔐 Autenticación de Usuarios**: Permite el registro, inicio de sesión y autenticación segura mediante JWT.
+- **📖 Gestión de Libros**: CRUD (Crear, Leer, Actualizar y Eliminar) de libros con información relevante (título, autor, disponibilidad).
+- **📅 Reservaciones**: Permite a los usuarios reservar libros y verificar la disponibilidad.
+- **👤 Gestión de Usuarios**: CRUD de usuarios y administración de roles (administrador y usuario estándar).
+- **🔒 Control de Acceso**: Roles y permisos para limitar el acceso a ciertos recursos según el rol del usuario.
 
-## Project setup
+## 🗂️ Estructura del Proyecto
 
 ```bash
-$ npm install
+src/
+├── auth/               # Módulo de autenticación y autorización
+├── libros/             # Módulo de gestión de libros
+├── reservaciones/      # Módulo para crear y gestionar reservaciones de libros
+├── usuario/            # Módulo de usuarios y administración de roles
+└── main.ts             # Punto de entrada de la aplicación
+
 ```
 
-## Compile and run the project
+## 🛠️ Requisitos Previos
+
+- Node.js (versión 14 o superior)
+- NestJS (versión 8 o superior)
+- Docker (opcional para contenedores y base de datos)
+- Base de datos MySQL
+
+## 📥 Instalación
+
+1. Clonar el repositorio:
+    
+    ```bash
+    
+    git clone https://github.com/Julian954/Biblioteca_Maria_Moliner.git
+    cd biblioteca-maria-moliner
+    
+    ```
+    
+2. Instalar dependencias:
+    
+    ```bash
+
+    npm install
+    
+    ```
+    
+3. Configurar las variables de entorno en el archivo `.env` (modificar el archivo `.env.example`  y cambiarlo a `.env` y modificar según sea necesario):
+    
+    ```makefile
+
+    DB_HOST=localhost
+    DB_PORT=3306
+    DB_USERNAME=root
+    DB_PASSWORD=password
+    DB_DATABASE=biblioteca
+    JWT_SECRET=supersecreto
+
+    ```
+    
+## 🐳 Despliegue con Docker
+
+Puedes usar el archivo `docker-compose.yml` para levantar el entorno completo con Docker:
 
 ```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
+docker-compose up -d
 
-# production mode
-$ npm run start:prod
 ```
+    
 
-## Run tests
+## 🏗️ Ejecución del Proyecto
+
+### 💻 Modo de Desarrollo
+
+Para ejecutar el proyecto en modo desarrollo con auto-reload:
 
 ```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+npm run start:dev
 
-# test coverage
-$ npm run test:cov
 ```
 
-## Resources
+### 🚀 Modo de Producción
 
-Check out a few resources that may come in handy when working with NestJS:
+Para compilar y ejecutar el proyecto en modo producción:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
 
-## Support
+npm run start:prod
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```
 
-## Stay in touch
+### 🔍 Ejecutar Pruebas
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+El proyecto incluye pruebas unitarias y de integración:
 
-## License
+```bash
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Pruebas unitarias
+npm run test
+
+# Pruebas E2E
+npm run test:e2e
+
+# Cobertura de pruebas
+npm run test:cov
+
+```
+
+## 📡 Endpoints Principales
+
+| Método | Endpoint | Descripción |
+| --- | --- | --- |
+| POST | `/auth/register` | Registro de nuevos usuarios |
+| POST | `/auth/login` | Inicio de sesión |
+| GET | `/libros` | Obtener la lista de libros |
+| POST | `/libros` | Crear un nuevo libro |
+| PATCH | `/libros/:id` | Actualizar información de un libro |
+| DELETE | `/libros/:id` | Eliminar un libro |
+| POST | `/reservaciones` | Crear una nueva reservación |
+| GET | `/reservaciones` | Obtener todas las reservaciones |
+
+## 🤝 Contribución
+
+Si deseas contribuir a este proyecto, sigue los siguientes pasos:
+
+1. Realiza un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y realiza un commit (`git commit -m 'Agrega nueva funcionalidad'`).
+4. Envía tus cambios (`git push origin feature/nueva-funcionalidad`).
+5. Crea un Pull Request y describe tus cambios.
