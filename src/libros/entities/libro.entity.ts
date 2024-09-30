@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Reservacione } from "src/reservaciones/entities/reservacione.entity";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Libro {
@@ -26,4 +27,7 @@ export class Libro {
 
     @DeleteDateColumn()
     deletedAt:Date;
+
+    @OneToOne(() => Reservacione, (reservacione) => reservacione.libro) // Relación uno a uno
+    reservacion: Reservacione;
 }

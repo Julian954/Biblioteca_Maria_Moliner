@@ -1,4 +1,6 @@
-import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, Entity } from "typeorm";
+import { Libro } from "src/libros/entities/libro.entity";
+import { Usuario } from "src/usuario/entities/usuario.entity";
+import { PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne } from "typeorm";
 
 @Entity()
 export class Reservacione {
@@ -6,11 +8,12 @@ export class Reservacione {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    id_libro: number;
+    @ManyToOne(() => Usuario, (usuario) => usuario.reservaciones, { eager: true }) // Relación muchos a uno con Usuario
+    usuario: Usuario;
 
-    @Column()
-    id_usuario: number;
+    @OneToOne(() => Libro, { eager: true }) // Relación uno a uno con Libro
+    @JoinColumn() // Relaciona con la tabla Libro
+    libro: Libro;
 
     @Column()
     inicio_reservacion: Date;

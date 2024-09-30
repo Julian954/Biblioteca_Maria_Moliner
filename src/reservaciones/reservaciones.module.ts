@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reservacione } from './entities/reservacione.entity';
 import { Libro } from 'src/libros/entities/libro.entity';
 import { ScheduleModule } from '@nestjs/schedule';
+import { Usuario } from 'src/usuario/entities/usuario.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Reservacione, Libro]),ScheduleModule.forRoot()],
+  imports: [TypeOrmModule.forFeature([Reservacione, Libro , Usuario]),ScheduleModule.forRoot()],
   controllers: [ReservacionesController],
   providers: [ReservacionesService],
 })
