@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Exclude } from "class-transformer";
+import { Reservacione } from "src/reservaciones/entities/reservacione.entity";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Usuario {
@@ -9,11 +11,15 @@ export class Usuario {
     @Column()
     name: string;
 
-    @Column()
+    @Column({unique: true,nullable: false})
     email: string;
 
-    @Column()
+    @Exclude()
+    @Column({nullable: false})
     password: string;
+
+    @Column({default: 'user'})
+    rol: string;
     
     @CreateDateColumn()
     createdAt:Date;
@@ -23,4 +29,7 @@ export class Usuario {
 
     @DeleteDateColumn()
     deletedAt:Date;
+
+    @OneToMany(() => Reservacione, (reservacione) => reservacione.usuario) // Relación uno a muchos
+    reservaciones: Reservacione[];
 }
