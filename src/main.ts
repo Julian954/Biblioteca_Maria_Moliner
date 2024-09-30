@@ -21,9 +21,13 @@ async function bootstrap() {
   .setTitle('API Biblioteca')
   .setDescription('Documentación de la API para gestionar libros y reservaciones')
   .setVersion('1.0')
+  .addBearerAuth() // Habilitar Bearer Auth
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
+  // Reordenar los tags manualmente
+  const tagsOrder = ['Authentication', 'Libros', 'Reservaciones', 'Usuarios']; // Aquí pones el orden que deseas
+  document.tags.sort((a, b) => tagsOrder.indexOf(a.name) - tagsOrder.indexOf(b.name)); // Reordenar los tags
   SwaggerModule.setup('api', app, document); // La documentación estará disponible en /api
 
   await app.listen(3000);
