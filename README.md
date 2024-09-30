@@ -126,6 +126,7 @@ npm run test:cov
 | POST | `/reservaciones` | Crear una nueva reservación |
 | GET | `/reservaciones` | Obtener todas las reservaciones |
 
+Para probar los endpoints puedes ingresar a `tuhost:3000/api` para ingresar a la documentacion de swagger de la API 
 ## 🤝 Contribución
 
 Si deseas contribuir a este proyecto, sigue los siguientes pasos:
